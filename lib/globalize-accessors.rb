@@ -37,6 +37,7 @@ module Globalize::Accessors
 
     define_method :"#{localized_attr_name}=" do |value|
       return if !translation_caches[locale] && value.blank?
+      raise
       write_attribute(attr_name, value, :locale => locale)
       translation_for(locale)[attr_name] = value
     end
